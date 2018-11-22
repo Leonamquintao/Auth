@@ -25,6 +25,7 @@ const styles = StyleSheet.create({
     position: 'relative',
   },
   head: {
+    marginTop: 10,
     fontSize: 22,
   },
 
