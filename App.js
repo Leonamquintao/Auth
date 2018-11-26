@@ -17,7 +17,7 @@ export default class App extends Component<Props> {
       messagingSenderId: MESSAGING_SENDER_ID
     });
   }
-  
+
   render() {
     return (
       <View style={{ flex: 1 }}>
