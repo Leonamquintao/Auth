@@ -3,7 +3,7 @@ import { View } from 'react-native';
 
 import Card from './Card';
 import CardSection from './CardSection';
-import Input from './Input';
+import InputComponent from './InputComponent';
 import Button from './Button';
 
 export default class LoginForm extends Component<{}> {
@@ -12,14 +12,12 @@ export default class LoginForm extends Component<{}> {
     return(
       <Card>
         <CardSection>
-          <Input value={ this.state.text }
-            onChangeTextText={ text => this.setState({text}) } />
+          <InputComponent label={ 'email' } value={ this.state.text } onChangeTextText={ text => this.setState({text}) } />
         </CardSection>
 
-        <CardSection />
-          <CardSection>
-            <Button buttonText={'Log In'} propMethod={ console.log('here') } />
-          </CardSection>
+        <CardSection>
+          <Button buttonText={'Log In'} propMethod={ console.log('here') } />
+        </CardSection>
       </Card>
     );
   }
