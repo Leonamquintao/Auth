@@ -9,7 +9,7 @@ import Button from './Button';
 export default class LoginForm extends Component<{}> {
   state = { email: '', password: '' };
 
-  loginUser() {
+  submit() {
     console.log('state ', this.state)
   }
 
@@ -19,18 +19,18 @@ export default class LoginForm extends Component<{}> {
 
         <CardSection>
           <InputComponent label={ 'Email:' } placeholder={ 'enter valid email' }
-            value={ this.state.text }
-            onChangeTextText={ email => this.setState({ email }) } />
+            value={ this.state.email }
+            onChange={ (email) => this.setState({ email }) } />
         </CardSection>
 
         <CardSection>
           <InputComponent label={ 'Password:' } placeholder={ 'password' }
             value={ this.state.password } secureTextEntry
-            onChangeTextText={ password => this.setState({ password }) } />
+            onChange={ (password) => this.setState({ password }) } />
         </CardSection>
 
         <CardSection>
-          <Button buttonText={'Log In'} propMethod={ this.loginUser.bind(this) } />
+          <Button buttonText={'Log In'} propMethod={ this.submit.bind(this) } />
         </CardSection>
 
       </Card>

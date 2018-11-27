@@ -1,13 +1,13 @@
 import React from 'react';
 import { TextInput, View, Text, StyleSheet } from 'react-native';
 
-const InputComponent = ({ label, value, onChangeTextText, placeholder, secureTextEntry }) => {
+const InputComponent = ({ label, val, onChange, placeholder, secureTextEntry }) => {
   const { containerStyle, labelStyle, inputStyle } = styles;
   return(
     <View style={ containerStyle }>
       <Text style={ labelStyle }>{ label }</Text>
         <TextInput autoCorrect={ false } secureTextEntry={secureTextEntry}
-          value={ value } onChangeTextText={ onChangeTextText }
+          autoCapitalize="none" value={ val } onChangeText={ onChange }
           placeholder={ placeholder } style={ inputStyle } />
     </View>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     paddingLeft: 5,
     fontSize: 18,
     lineHeight: 23,
-    flex: 2,
+    flex: 2
   },
   labelStyle: {
     fontSize: 18,
