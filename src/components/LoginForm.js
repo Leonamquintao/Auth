@@ -7,16 +7,17 @@ import InputComponent from './InputComponent';
 import Button from './Button';
 
 export default class LoginForm extends Component<{}> {
-  state = { text: '' };
+  state = { email: '' };
   render() {
     return(
       <Card>
         <CardSection>
-          <InputComponent label={ 'email' } value={ this.state.text } onChangeTextText={ text => this.setState({text}) } />
+          <InputComponent label={ 'Email:' } placeholder={ 'enter valid email' }
+            value={ this.state.text } onChangeTextText={ email => this.setState({ email }) } />
         </CardSection>
 
         <CardSection>
-          <Button buttonText={'Log In'} propMethod={ console.log('here') } />
+          <Button buttonText={'Log In'} propMethod={ console.log('state => ', this.state) } />
         </CardSection>
       </Card>
     );
