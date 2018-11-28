@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View } from 'react-native';
-
+import firebase from 'firebase';
 import Card from './Card';
 import CardSection from './CardSection';
 import InputComponent from './InputComponent';
@@ -10,7 +10,13 @@ export default class LoginForm extends Component<{}> {
   state = { email: '', password: '' };
 
   submit() {
-    console.log('state ', this.state)
+    const {email, password} = this.state;
+    firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => {
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+      .catch((err) => {
+        alert(err)
+      })
+    });
   }
 
   render() {
