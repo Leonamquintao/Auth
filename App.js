@@ -15,8 +15,6 @@ export default class App extends Component<Props> {
       projectId: PROJECT_ID,
       storageBucket: STORAGE_BUCKET,
       messagingSenderId: MESSAGING_SENDER_ID
-
-      
     });
   }
 
