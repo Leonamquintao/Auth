@@ -5,13 +5,17 @@ import Card from './Card';
 import CardSection from './CardSection';
 import InputComponent from './InputComponent';
 import Button from './Button';
+import Spinner from './SpinnerComponent';
 
 export default class LoginForm extends Component<{}> {
-  state = { email: '', password: '', error: '' };
+  state = { email: '', password: '', error: '', loading: false };
 
   submit() {
+
     const { email, password } = this.state;
-    this.setState({ error: '' });
+
+    this.setState({ error: '', loading: true });
+
     firebase.auth().signInWithEmailAndPassword(email, password).catch((err) => {
       firebase.auth().createUserWithEmailAndPassword(email, password)
       .catch((err) => {
@@ -21,10 +25,20 @@ export default class LoginForm extends Component<{}> {
     });
   }
 
+  renderButton() {
+    if(this.state.loading) {
+      return <Spinner size='small' />
+    }
+
+    return(
+      <Button buttonText={'Log In'} propMethod={ this.submit.bind(this) } />
+    );
+  }
+
   render() {
     return(
       <Card>
-
+        
         <CardSection>
           <InputComponent label={ 'Email:' } placeholder={ 'enter valid email' }
             value={ this.state.email }
@@ -40,7 +54,7 @@ export default class LoginForm extends Component<{}> {
         <Text style={ styles.error }>{ this.state.error }</Text>
 
         <CardSection>
-          <Button buttonText={'Log In'} propMethod={ this.submit.bind(this) } />
+          { this.renderButton() }
         </CardSection>
 
       </Card>
