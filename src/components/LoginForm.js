@@ -36,7 +36,7 @@ export default class LoginForm extends Component<{}> {
   }
 
   loginSuccess() {
-    this.setState({ error: '', loading: false, email: '', password: '' });
+    this.setState({ email: '', password: '', loading: false, error: '' });
   }
 
   loginFail() {
